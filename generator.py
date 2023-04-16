@@ -60,17 +60,17 @@ def print_dataset(capacity, num_of_class, dataset, filename="dataset.txt"):
         file.write(", ".join([str(i.ans) for i in dataset]) + "\n")
 
 
-def verify_answer():
+def verify_answer(file_input="input.txt", file_output="output.txt"):
     # read file input.txt and verify the answer on output.txt
-    with open("input.txt", "r") as file:
+    with open(file_input, "r") as file:
         capacity = int(file.readline())
         num_of_class = int(file.readline())
-        weight = [int(x) for x in file.readline().split(",")]
+        weight = [float(x) for x in file.readline().split(",")]
         value = [int(x) for x in file.readline().split(",")]
         label = [int(x) for x in file.readline().split(",")]
-    with open("output.txt", "r") as file:
+    with open(file_output, "r") as file:
         total_value = int(file.readline())
-        ans = [int(x) for x in file.readline().split()]
+        ans = [int(x) for x in file.readline().split(",")]
     # verify
     total_weight = 0
     existing_class = []
